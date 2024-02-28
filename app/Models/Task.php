@@ -31,6 +31,10 @@ class Task extends Model
     protected bool $is_completed = false;
 
 
+    public function frenquency() {
+        return $this->hasOne(Recurrence::class);
+    }
+
 
     public function user()
     {

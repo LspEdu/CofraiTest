@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('recurrences', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('task_id')->constrained()->onDelete('Cascade');
+            $table->string('frequency');
+            $table->string('iteration_duration_type');
+            $table->integer('iteration_duration_value')->nullable();
+            $table->string('specific_days')->nullable();
         });
     }
 
