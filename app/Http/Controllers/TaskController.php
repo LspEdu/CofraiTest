@@ -12,7 +12,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+
+        $allTasks = Task::where('is_completed','false')->get();
+
+
+        return view('dashboard', [
+            'todayTasks'    => $allTasks,
+        ]);
     }
 
     /**
