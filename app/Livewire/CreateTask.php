@@ -37,8 +37,9 @@ class CreateTask extends ModalComponent
         Auth::user()->tasks()->save($task);
 
 
-
-        $this->closeModal();
+        $this->closeModalWithEvents([
+            'taskUpdated',
+        ]);
     }
 
 
