@@ -9,6 +9,7 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        './app/Http/Livewire/*.php',
     ],
 
     theme: {

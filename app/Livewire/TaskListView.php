@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Task;
+use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -16,20 +17,23 @@ class TaskListView extends Component
     public $color;
 
 
-    public function mount($tasks, $title, $color){
+    public function mount($tasks, $title, $color)
+    {
         $this->tasks = $tasks;
         $this->title = $title;
         $this->color = $color;
     }
 
     #[On('taskUpdated')]
-    public function updateTasks( ){
-        $this->tasks = Task::where('is_completed','false')->get();
+    public function updateTasks() //TODO:: CORREGIR
+    {
+        return $this->redirect('/dashboard',200);
+
     }
     public function render()
     {
         return <<<'HTML'
-            <div wire:poll class="bg-{{$this->color}}-500 max-w-25  my-3 rounded p-2 shadow  hover:shadow-xl">
+            <div  class="bg-{{$this->color}}-500 max-w-25  my-3 rounded p-2 shadow  hover:shadow-xl">
                 <h3 class="text-xl text-bolder text-center mb-4 " >{{$title}}</h3>
                 <ul class="list-inside list-disc">
                     @if(empty($tasks[0])) <li>Nothing to do!😉</li>

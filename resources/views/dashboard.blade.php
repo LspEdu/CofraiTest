@@ -12,7 +12,12 @@
                 @livewire('CreateTaskGroupButton')
             </div>
             <div class="bg-white flex p-3 justify-around gap-1 flex-wrap min-h-50 text-gray-900 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                @livewire('TaskListView', ['tasks' => $delayedTasks, 'title' => 'Delayed Tasks', 'color' => 'red'])
                 @livewire('TaskListView', ['tasks' => $todayTasks, 'title' => 'Today Tasks', 'color' => 'red'])
+                @livewire('TaskListView', ['tasks' => $tomorrowTasks, 'title' => 'Tomorrow Tasks', 'color' => 'orange'])
+                @livewire('TaskListView', ['tasks' => $nextWeekTasks, 'title' => 'Next Week Tasks', 'color' => 'yellow'])
+                @livewire('TaskListView', ['tasks' => $nearFutureTasks, 'title' => 'Near Future Tasks', 'color' => 'cyan'])
+                @livewire('TaskListView', ['tasks' => $futureTasks, 'title' => 'Future Tasks', 'color' => 'blue'])
 
             </div>
         </div>

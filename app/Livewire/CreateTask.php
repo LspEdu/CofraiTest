@@ -54,9 +54,9 @@ class CreateTask extends ModalComponent
     public function render()
     {
         return <<<'HTML'
-            <div class="py-4 px-4">
+            <div class="py-4 px-4 flex flex-col">
                 <h2 class="text-xl">Create Task</h2>
-                <hr class="mt-2 mb-2 shadow">
+                <hr class="mt-2  shadow">
                 <form wire:submit="save" class="">
                     <div class="mt-4 mb-4">
                         <label class="block text-gray-700  font-bold mb-2" for="name">Name </label>
@@ -80,7 +80,7 @@ class CreateTask extends ModalComponent
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-6 flex justify-between">
+                    <div class="mb-6 flex flex-wrap  justify-between">
                         <div class="">
                             <label class="block text-gray-700  font-bold mb-2" for="start_date">Initial Date </label>
                             <input type="date" name="start_date" id="start_date" wire:model="start_date">
@@ -92,7 +92,9 @@ class CreateTask extends ModalComponent
                             <div class="text-red-600">@error('end_date') {{ $message }} @enderror</div>
                         </div>
                     </div>
-                    <button class="bg-green-400" type="submit">Add</button>
+                    <div class="text-center">
+                        <button class="bg-green-400 rounded-md p-2 px-20 mt-2 shadow-lg  " type="submit">Add</button>
+                    </div>
                 </form>
             </div>
         HTML;

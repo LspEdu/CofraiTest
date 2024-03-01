@@ -22,9 +22,6 @@ class TaskView extends ModalComponent
 
         $this->task->is_completed = true;
         $this->task->save();
-
-
-
         $this->closeModalWithEvents([
             'taskUpdated',
         ]);
@@ -41,8 +38,7 @@ class TaskView extends ModalComponent
                 <p>Group Assigned: <b> {{ $task->taskGroup->name }} </b></p>
                 <p>Deliver End Date: <b>{{$task->end_date}}</b></p>
                 <form wire:submit="complete" class="">
-
-                    <button  class="bg-green-400" type="submit">Add</button>
+                    <button  class="bg-green-400 hover:bg-green-700  rounded-md p-2 mt-2 shadow-lg " type="submit">Add</button>
                 </form>
             </div>
 
