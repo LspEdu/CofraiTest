@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Task;
+use App\Models\TaskGroup;
 use LivewireUI\Modal\ModalComponent;
 
 class TaskView extends ModalComponent
@@ -10,8 +11,11 @@ class TaskView extends ModalComponent
 
     public Task $task;
 
+
+
     public function mount($task){
         $this->task = $task;
+
     }
 
     public function complete(){
@@ -34,6 +38,7 @@ class TaskView extends ModalComponent
                 <h2 class="text-xl">{{$task->name}}</h2>
                 <hr class="mt-2 mb-2 shadow">
                 <p class="w-full py-10 min-h-25 rounded shadow-sm border indent-2 ">{{$task->description}}</p>
+                <p>Group Assigned: <b> {{ $task->taskGroup->name }} </b></p>
                 <p>Deliver End Date: <b>{{$task->end_date}}</b></p>
                 <form wire:submit="complete" class="">
 

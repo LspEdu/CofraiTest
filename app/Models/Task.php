@@ -36,6 +36,11 @@ class Task extends Model
     }
 
 
+    public function taskGroup(){
+        return $this->belongsTo(TaskGroup::class);
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Task;
+use App\Models\TaskGroup;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use LivewireUI\Modal\ModalComponent;
@@ -22,21 +23,27 @@ class CreateTask extends ModalComponent
 
     public $is_completed = false;
 
+    public  $taskGroups ;
+
+    public $group = 1;
+
+    public function mount () {
+        $this->taskGroups = TaskGroup::all();
+    }
 
     public function save(){
 
         $this->validate();
-
-
         $task = new Task();
         $task->name = $this->name;
         $task->description = $this->description;
         $task->start_date = $this->start_date;
         $task->end_date = $this->end_date ?: null;
         $task->is_completed = $this->is_completed;
-        Auth::user()->tasks()->save($task);
-
-
+        $this->js('alert('.$this->group.')');
+        $task->taskGroup()->associate(TaskGroup::find($this->group));
+        $task->user()->associate(Auth::user());
+        $task->save();
         $this->closeModalWithEvents([
             'taskUpdated',
         ]);
@@ -60,6 +67,18 @@ class CreateTask extends ModalComponent
                         <label class="block text-gray-700  font-bold mb-2" for="description">Description </label>
                         <textarea  class="shadow appearance-none border rounded w-full py-2 px-3" name="description" id="description" cols="30" rows="5" wire:model="description"></textarea>
                         <div class="text-red-600">@error('description') {{ $message }} @enderror</div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="group">Select group assigned</label>
+                        <select name="group" id="group" wire:model="group">
+                            @foreach($this->taskGroups as $group)
+                            <option value="{{$group->id}}">{{$group->name}}</option>
+                                @if($loop->first)
+                                    <hr class="dotted">
+                                @endif
+
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-6 flex justify-between">
                         <div class="">

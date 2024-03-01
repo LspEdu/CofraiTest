@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\TaskGroup;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -14,10 +15,11 @@ class TaskController extends Controller
     {
 
         $allTasks = Task::where('is_completed','false')->get();
-
+        $taskGroup = TaskGroup::all();
 
         return view('dashboard', [
             'todayTasks'    => $allTasks,
+            'taskGroup'     => $taskGroup,
         ]);
     }
 
