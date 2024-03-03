@@ -45,7 +45,9 @@ class CreateTaskGroup extends ModalComponent
                         <textarea  class="shadow appearance-none border rounded w-full py-2 px-3" name="description" id="description" cols="30" rows="5" wire:model="description"></textarea>
                         <div class="text-red-600">@error('description') {{ $message }} @enderror</div>
                     </div>
-                    <button class="bg-green-400" type="submit">Add</button>
+                    <div class="text-center">
+                        <button class="bg-green-400 rounded-md p-2 px-20 mt-2 shadow-lg  " type="submit">Add</button>
+                    </div>
                 </form>
             </div>
         HTML;

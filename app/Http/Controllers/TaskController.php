@@ -87,6 +87,15 @@ class TaskController extends Controller
         ]);
     }
 
+
+    public function getTasksUncompleted()
+    {
+        $tasks = Task::all();
+
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

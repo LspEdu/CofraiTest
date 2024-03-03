@@ -25,7 +25,7 @@ class TaskListView extends Component
     }
 
     #[On('taskUpdated')]
-    public function updateTasks() //TODO:: CORREGIR
+    public function updateTasks()
     {
         return $this->redirect('/dashboard',200);
 
@@ -33,7 +33,7 @@ class TaskListView extends Component
     public function render()
     {
         return <<<'HTML'
-            <div  class="bg-{{$this->color}}-500 max-w-25  my-3 rounded p-2 shadow  hover:shadow-xl">
+            <div  class="bg-{{$this->color}}-400 w-25  my-3 rounded p-2 shadow  hover:shadow-xl">
                 <h3 class="text-xl text-bolder text-center mb-4 " >{{$title}}</h3>
                 <ul class="list-inside list-disc">
                     @if(empty($tasks[0])) <li>Nothing to do!😉</li>

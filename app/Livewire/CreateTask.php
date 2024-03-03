@@ -40,7 +40,6 @@ class CreateTask extends ModalComponent
         $task->start_date = $this->start_date;
         $task->end_date = $this->end_date ?: null;
         $task->is_completed = $this->is_completed;
-        $this->js('alert('.$this->group.')');
         $task->taskGroup()->associate(TaskGroup::find($this->group));
         $task->user()->associate(Auth::user());
         $task->save();
