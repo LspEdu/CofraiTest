@@ -10,6 +10,23 @@ class Recurrence extends Model
 {
     use HasFactory;
 
+
+    /**
+     * Explain the attributes
+     *
+     * frequency = Daily/Weekly/Monthly/Yearly
+     *
+     * iteration_duration_type = (START DATE FOR THE ITERATION)
+     *  This means if we want every Monday, this is the start date for the iteration
+     *
+     * iteration_duration_value = End_Date/Number for iterations
+     *  And with this we check the value, if is a date, the calculations go from day to day; but if its a number
+     *  we calculate the days.
+     *
+     * specific_days = 'Monday', '5 of March'
+     *  For specific days as 5 of March every year.
+     *
+     */
     protected $fillable = [
         'frequency',
         'iteration_duration_type',
